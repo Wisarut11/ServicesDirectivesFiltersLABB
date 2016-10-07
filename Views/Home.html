@@ -1,0 +1,78 @@
+﻿<div class="col-md-12">
+    <h1 ng-bind="title"></h1>
+</div>
+
+<!-- Search filter-->
+<div class="container">
+    <div class="form-group">
+        <label for="title">Title filter</label>
+        <input type="text"
+               class="form-control"
+               placeholder="Title filter"
+               ng-model="author.title" />
+    </div>
+    <div class="form-group">
+        <label for="author">Author filter</label>
+        <input type="text"
+               class="form-control"
+               placeholder=""
+               ng-model="author.author" />
+    </div>
+
+</div>
+
+<div class="col-md-12">
+
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th></th>
+            <th>Body</th>
+            <th>Post Date</th>
+            <th></th>
+        </tr>
+        <!-- Search filter-->
+        <tr ng-repeat="post in posts |filter: author: title">
+            <td class="col-md-1" ng-bind="post.title"></td>
+            <td class="col-md-1" ng-bind="post.author">
+            <td class="col-md-1"></td>
+            <td class="col-md-1" ng-bind="post.body"></td>
+            <td class="col-md-1" ng-bind="post.postDate"></td>
+            <td class="col-md-1" ng-bind=""></td>
+            <td class="col-md-3 ">
+
+                <!-- Vote Button-->
+                <button type="button"
+                        class="btn btn-success btn-xs"
+                        ng-click="upVote(post)">
+                    <span title="Up vote" class="glyphicon glyphicon-thumbs-up"> {{post.upvotes}} </span>
+                </button>
+
+                <button type="button"
+                        class="btn btn-danger btn-xs"
+                        ng-click="downVote(post)">
+                    <span title="Up vote" class="glyphicon glyphicon-thumbs-down"> {{post.downvotes}} </span>
+                </button>
+
+                <!-- Subscribe button-->
+                <button type="button"
+                        class="btn btn-info btn-xs"
+                        ng-click="subscribe(post.author)"
+                        ng-show="subscribedAuthors.indexOf(post.author) == -1">
+                    <span class="glyphicon glyphicon-eye-open"></span> Subscribe
+                </button>
+
+                <span ng-show="subscribedAuthors.indexOf(post.author) != -1">
+                    <span class="glyphicon glyphicon-ok"></span> Subscribed
+                </span>
+
+            </td>
+
+
+
+        </tr>
+
+    </table>
+
+</div>

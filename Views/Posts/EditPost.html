@@ -1,0 +1,40 @@
+﻿<div class="col-md-12">
+    <h1 ng-bind="title"></h1>
+</div>
+
+<div class="col-md-4">
+    <form ng-submit="updatePost()">
+        <fieldset>
+            <legend>Edit post</legend>
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input type="text"
+                       id="title"
+                       class="form-control"
+                       placeholder="Title..."
+                       ng-model="post.title" />
+            </div>
+            <div class="form-group">
+                <label for="author">Author</label>
+                <input type="text"
+                       id="author"
+                       class="form-control"
+                       placeholder="Author..."
+                       ng-model="post.author" />
+            </div>
+            <div class="form-group">
+                <label for="body">Body</label>
+                <textarea id="body"
+                          class="form-control"
+                          style="width: 100%; height: 200px;"
+                          placeholder="Body..."
+                          ng-model="post.body"></textarea>
+            </div>
+
+            <button type="submit"
+                    class="btn btn-success">
+                Update post
+            </button>
+        </fieldset>
+    </form>
+</div>

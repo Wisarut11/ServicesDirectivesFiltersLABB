@@ -1,0 +1,41 @@
+﻿<div class="col-md-12">
+    <h1 ng-bind="title"></h1>
+</div>
+
+<div class="col-md-12">
+    <button type="button"
+            class="btn btn-primary"
+            ng-click="go('/Posts/New')">
+        <span class="glyphicon glyphicon-plus"></span> New post
+    </button>
+</div>
+
+
+<div class="col-md-12">
+    <table class="table">
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Post Date</th>
+            <th></th>
+        </tr>
+        <tr ng-repeat="post in posts track by $index">
+            <td class="col-md-1" ng-bind="post.title"></td>
+            <td class="col-md-1" ng-bind="post.author"></td>
+            <td class="col-md-1" ng-bind="post.postDate"></td>
+            <td class="col-md-1">
+                <button type="button"
+                        class="btn btn-info"
+                        ng-click="go('/Posts/Edit/' + post.id)">
+                    <span class="glyphicon glyphicon-edit"></span> Edit
+                </button>
+
+                <button type="button"
+                        class="btn btn-danger"
+                        ng-click="deletePost(post)">
+                    <span class="glyphicon glyphicon-remove"></span> Delete
+                </button>
+            </td>
+        </tr>
+    </table>
+</div>
